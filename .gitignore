@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+target/
+gen/schemas/
+
+# Tauri
+src-tauri/target/
+src-tauri/gen/
+src-tauri/WixTools/
+# Platform icons are generated from src-tauri/icons/app-icon.png via `npm run icons`
+src-tauri/icons/*.ico
+src-tauri/icons/*.icns
+src-tauri/icons/[0-9]*.png
+src-tauri/icons/[0-9]*@2x.png
+src-tauri/icons/Square*.png
+src-tauri/icons/StoreLogo.png
+src-tauri/icons/ios/
+src-tauri/icons/android/
+
+# Local app data (keys, ratings, battles) — never commit
+*.vlarena.json
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log
