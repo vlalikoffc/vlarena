@@ -1,0 +1,20 @@
+{
+  "name": "arena-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Мост между чатом arena.ai и локальным ПК: браузерное расширение + локальный HTTP-сервер выполнения команд",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "npm --prefix server test && node --test extension/test/*.test.js",
+    "icons": "node tools/make-icons.js",
+    "demo": "node tools/make-demo.js",
+    "smoke": "node tools/smoke-test.js"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

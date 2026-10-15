@@ -1,0 +1,19 @@
+{
+  "name": "arena-bridge-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Локальный HTTP-сервер arena-bridge: выполняет команды с ПК по запросу браузерного расширения",
+  "main": "index.js",
+  "type": "commonjs",
+  "bin": {
+    "arena-bridge": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

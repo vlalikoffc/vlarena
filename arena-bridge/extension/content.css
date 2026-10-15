@@ -1,0 +1,167 @@
+/* arena-bridge: панель выполнения локальной команды внутри чата arena.ai */
+
+.ab-panel {
+  --ab-border: #d0d7de;
+  --ab-bg: #f6f8fa;
+  --ab-fg: #1f2328;
+  --ab-muted: #656d76;
+  --ab-accent: #0969da;
+  --ab-ok: #1a7f37;
+  --ab-warn: #9a6700;
+  --ab-error: #cf222e;
+
+  box-sizing: border-box;
+  margin: 10px 0 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--ab-border);
+  border-radius: 10px;
+  background: var(--ab-bg);
+  color: var(--ab-fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ab-panel {
+    --ab-border: #30363d;
+    --ab-bg: #161b22;
+    --ab-fg: #e6edf3;
+    --ab-muted: #8b949e;
+    --ab-accent: #4493f8;
+    --ab-ok: #3fb950;
+    --ab-warn: #d29922;
+    --ab-error: #f85149;
+  }
+}
+
+.ab-panel *,
+.ab-panel *::before,
+.ab-panel *::after {
+  box-sizing: border-box;
+}
+
+.ab-panel__title {
+  margin-bottom: 8px;
+  color: var(--ab-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ab-panel__cmd {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  max-height: 260px;
+  overflow: auto;
+  border: 1px solid var(--ab-border);
+  border-radius: 8px;
+  background: rgba(127, 127, 127, 0.08);
+  color: var(--ab-fg);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ab-panel__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ab-panel__cwd {
+  flex: 1 1 260px;
+  min-width: 200px;
+  padding: 7px 10px;
+  border: 1px solid var(--ab-border);
+  border-radius: 8px;
+  background: var(--ab-bg);
+  color: var(--ab-fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
+.ab-panel__cwd:focus {
+  outline: 2px solid var(--ab-accent);
+  outline-offset: 1px;
+}
+
+.ab-panel__btn {
+  padding: 7px 12px;
+  border: 1px solid var(--ab-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ab-fg);
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ab-panel__btn:hover:not(:disabled) {
+  border-color: var(--ab-accent);
+  color: var(--ab-accent);
+}
+
+.ab-panel__btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.ab-panel__btn--primary {
+  border-color: var(--ab-accent);
+  background: var(--ab-accent);
+  color: #fff;
+}
+
+.ab-panel__btn--primary:hover:not(:disabled) {
+  background: var(--ab-accent);
+  color: #fff;
+  filter: brightness(1.08);
+}
+
+.ab-panel--armed {
+  border-color: var(--ab-warn);
+}
+
+.ab-panel--armed .ab-panel__btn--primary {
+  border-color: var(--ab-warn);
+  background: var(--ab-warn);
+}
+
+.ab-panel__status {
+  margin-top: 9px;
+  color: var(--ab-muted);
+  font-size: 12.5px;
+  word-break: break-word;
+}
+
+.ab-panel__status[data-kind="ok"] { color: var(--ab-ok); }
+.ab-panel__status[data-kind="warn"] { color: var(--ab-warn); }
+.ab-panel__status[data-kind="error"] { color: var(--ab-error); }
+.ab-panel__status[data-kind="busy"] { color: var(--ab-accent); }
+
+.ab-panel__out {
+  margin: 9px 0 0;
+  padding: 10px 12px;
+  max-height: 420px;
+  overflow: auto;
+  border: 1px solid var(--ab-border);
+  border-radius: 8px;
+  background: rgba(127, 127, 127, 0.08);
+  color: var(--ab-fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ab-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
