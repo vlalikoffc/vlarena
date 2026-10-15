@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>arena-bridge</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="head">
+    <h1>arena-bridge</h1>
+    <span id="status-dot" class="dot dot--off" title="Состояние сервера"></span>
+  </header>
+
+  <section class="block">
+    <div class="row">
+      <label for="server-url">Адрес сервера</label>
+      <input id="server-url" type="text" placeholder="http://127.0.0.1:7842" spellcheck="false" />
+    </div>
+    <div class="row">
+      <label for="token">Токен</label>
+      <input id="token" type="password" placeholder="токен из консоли сервера" spellcheck="false" />
+    </div>
+    <div class="row row--buttons">
+      <button id="save-settings" type="button" class="btn btn--primary">Сохранить</button>
+      <button id="check" type="button" class="btn">Проверить</button>
+      <button id="toggle-token" type="button" class="btn btn--ghost" title="Показать/скрыть токен">👁</button>
+    </div>
+    <p id="status-text" class="muted">Проверка…</p>
+  </section>
+
+  <section class="block">
+    <div class="row">
+      <label for="workdir">Рабочая папка по умолчанию</label>
+      <input id="workdir" type="text" placeholder="C:\\path\\to\\project" spellcheck="false" />
+    </div>
+  </section>
+
+  <section class="block">
+    <details>
+      <summary>Allowlist / denylist</summary>
+      <div class="row">
+        <label for="allowlist">Разрешённые команды (по одной в строке)</label>
+        <textarea id="allowlist" rows="6" spellcheck="false"></textarea>
+      </div>
+      <div class="row">
+        <label for="denylist">Запрещённые паттерны (regex, по одному в строке)</label>
+        <textarea id="denylist" rows="6" spellcheck="false"></textarea>
+      </div>
+      <div class="row row--buttons">
+        <button id="save-config" type="button" class="btn btn--primary">Сохранить конфиг</button>
+        <button id="reload-config" type="button" class="btn">Перезагрузить</button>
+      </div>
+    </details>
+  </section>
+
+  <section class="block">
+    <div class="row row--buttons row--spread">
+      <label>История (последние 20)</label>
+      <button id="clear-history" type="button" class="btn btn--ghost">Очистить</button>
+    </div>
+    <ul id="history" class="history"></ul>
+  </section>
+
+  <section class="block">
+    <button id="copy-instructions" type="button" class="btn btn--primary btn--wide">
+      Скопировать инструкцию для ИИ
+    </button>
+    <p class="muted small">
+      Вставьте инструкцию в чат arena.ai, чтобы модель использовала блоки
+      <code>&lt;&lt;&lt;LOCAL_CMD&gt;&gt;&gt;</code>.
+    </p>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
